@@ -22,6 +22,7 @@ public class StudentRepositoryTest {
         Student espero = new Student(12, "Paterno", "Nombre");
 
         Student recibo = studentRepository.findById(12);
+
         Assertions.assertEquals(espero.getId(),recibo.getId());
         Assertions.assertEquals(espero.getLastName(),recibo.getLastName());
         Assertions.assertEquals(espero.getFirstName(),recibo.getFirstName());
@@ -31,6 +32,7 @@ public class StudentRepositoryTest {
     @DisplayName("Test for find by Id from student is Less Zero")
     public void testFindByIdIsLessZero() {
         Integer id = -2;
+
         IllegalArgumentException illegalArgumentException
             = Assertions.assertThrows(IllegalArgumentException.class,
                 () -> studentRepository.findById(id));

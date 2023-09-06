@@ -20,31 +20,40 @@ public class StudentServiceTest {
     private StudentRepositoryImpl studentRepository;
 
     @Test
-    public void testBuscarPorId() {
-        Student espero = new Student(125, "Paterno", "Nombre");
+    public void testBuscarPorIdMayorIgual20() {
+        // Arrange
+        Student expected = new Student(125, "Paterno", "Nombre5");
+            // Mock
         Mockito.when( studentRepository.findById(Mockito.anyInt()) )
           .thenReturn( new Student(25, "Paterno", "Nombre") );
 
-        Student recibo = studentService.buscarPorId(25);
+        // Act
+        Student actual = studentService.buscarPorId(25);
 
-        Assertions.assertEquals(espero.getId(),recibo.getId());
-        Assertions.assertEquals(espero.getLastName(),recibo.getLastName());
-        Assertions.assertEquals(espero.getFirstName(),recibo.getFirstName());
+        // Assert
+        Assertions.assertEquals(expected.getId(),actual.getId());
+        Assertions.assertEquals(expected.getLastName(),actual.getLastName());
+        Assertions.assertEquals(expected.getFirstName(),actual.getFirstName());
 
         Mockito.verify(studentRepository, Mockito.times(1)).findById(Mockito.anyInt());
 
     }
+
     @Test
     public void testBuscarPorIdMenor20() {
-        Student espero = new Student(6, "Paterno", "Nombre");
+        // Arrange
+        Student expected = new Student(6, "Paterno2", "Nombre");
+        // Mock
         Mockito.when( studentRepository.findById(Mockito.anyInt()) )
-                .thenReturn( new Student(3, "Paterno", "Nombre") );
+            .thenReturn( new Student(3, "Paterno", "Nombre") );
 
-        Student recibo = studentService.buscarPorId(3);
+        // Act
+        Student actual = studentService.buscarPorId(3);
 
-        Assertions.assertEquals(espero.getId(),recibo.getId());
-        Assertions.assertEquals(espero.getLastName(),recibo.getLastName());
-        Assertions.assertEquals(espero.getFirstName(),recibo.getFirstName());
+        // Assert
+        Assertions.assertEquals(expected.getId(),actual.getId());
+        Assertions.assertEquals(expected.getLastName(),actual.getLastName());
+        Assertions.assertEquals(expected.getFirstName(),actual.getFirstName());
 
         Mockito.verify(
                 studentRepository,

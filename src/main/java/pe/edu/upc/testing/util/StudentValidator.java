@@ -8,6 +8,7 @@ public class StudentValidator {
     else if (id <= 0) {
       throw new IllegalArgumentException("No hay Id");
     }
+    // Happy Path
     return true;
   }
 

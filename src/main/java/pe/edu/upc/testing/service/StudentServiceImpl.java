@@ -15,8 +15,10 @@ public class StudentServiceImpl implements StudentService{
         Student student = studentRepository.findById(id);
         if (student.getId() < 20) {
             student.setId(student.getId() * 2);
+            student.setLastName(student.getLastName() + "2");
         } else {
             student.setId(student.getId() * 5);
+            student.setFirstName(student.getFirstName() + "5");
         }
         return student;
     }
